@@ -7,8 +7,10 @@ import Landing from './Landing';
 import Navigation from './Navigation';
 import SignIn from './SignIn';
 import SignUp from './SignUp';
+import Test from './TestDashboard';
 import { AuthProvider } from '../firebase/Auth';
 import PrivateRoute from './PrivateRoute';
+import Test1 from './Tests/Test1';
 function App() {
   return (
     <AuthProvider>
@@ -20,6 +22,8 @@ function App() {
         </div>
         <Route exact path="/" component={Landing} />
         <PrivateRoute path="/home" component={Home} />
+        <PrivateRoute path="/tests" component={Test} />
+        <PrivateRoute path="/test/1" component={Test1} />
         <PrivateRoute path="/account" component={Account} />
         <Route path="/signin" component={SignIn} />
         <Route path="/signup" component={SignUp} />
