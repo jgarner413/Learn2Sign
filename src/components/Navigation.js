@@ -15,19 +15,15 @@ import { AppBar, Toolbar, IconButton, Typography } from '@material-ui/core';
 
 const Navigation = () => {
 	const { currentUser } = useContext(AuthContext);
+	console.log(currentUser);
+	console.log(firebase.auth().currentUser);
 	return (
 		<div>{currentUser ? <NavigationAuth /> : <NavigationNonAuth />}</div>
 	);
 };
 
 const NavigationAuth = () => {
-	/*const GET_USER = gql`
-		query($userId: ID!) {
-			getUser(userId: $userId) {
-				name
-			}
-		}
-	`;
+	/*
 	console.log(firebase.auth().currentUser);
 	const userID = firebase.auth().currentUser.uid;
 	const { isloading, data } = useQuery(GET_USER, {
