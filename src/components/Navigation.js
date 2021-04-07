@@ -94,7 +94,7 @@ const NavigationAuth = () => {
 				</nav>
 				<br />
 				{{ data } && (
-					<div className="user name">Welcome Temp User</div> //Change when database is integrated
+					<div className="user name">Welcome {firebase.auth().currentUser.displayName}</div> //Change when database is integrated
 				)}
 			</div>
 		);

@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom';
 import { doCreateUserWithEmailAndPassword } from '../firebase/FirebaseFunctions';
 import { AuthContext } from '../firebase/Auth';
 import SocialSignIn from './SocialSignIn';
+import axios from 'axios';
 function SignUp() {
   const { currentUser } = useContext(AuthContext);
   const [pwMatch, setPwMatch] = useState('');
@@ -20,6 +21,9 @@ function SignUp() {
         passwordOne.value,
         displayName
       );
+      axios.post('http://localhost:9000/create/' + displayName.value).then(function (response){
+        console.log(response);
+      });
     } catch (error) {
       alert(error);
     }
