@@ -26,11 +26,7 @@ const NavigationAuth = () => {
 	/*
 	console.log(firebase.auth().currentUser);
 	const userID = firebase.auth().currentUser.uid;
-	const { isloading, data } = useQuery(GET_USER, {
-		variables: {
-			userId: userID
-		}
-	});*/
+*/
   let isloading = false; //temp until database is online
   let data = true; //temp until database is online
 	if (isloading) {
