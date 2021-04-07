@@ -21,7 +21,7 @@ function SignUp() {
         passwordOne.value,
         displayName
       );
-      axios.post('http://localhost:9000/create/' + displayName.value).then(function (response){
+      axios.post('http://localhost:9000/create/' + email.value).then(function (response){
         console.log(response);
       });
     } catch (error) {

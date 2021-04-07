@@ -6,7 +6,7 @@ const SocialSignIn = () => {
   const socialSignOn = async (provider) => {
     try {
       const cred = await doSocialSignIn(provider);
-      axios.post('http://localhost:9000/create/' + cred.user.displayName).then(function (response){
+      axios.post('http://localhost:9000/create/' + cred.user.email).then(function (response){
         console.log(response);
       });
     } catch (error) {
