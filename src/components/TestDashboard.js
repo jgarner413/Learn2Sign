@@ -42,7 +42,7 @@ function Test() {
   {
     name: "Test 2",
     id: 2,
-    summary: "Basic Phrases",
+    summary: "Basic Words and Phrases",
     image: "./src/lesson1.jpg"
   },
   
