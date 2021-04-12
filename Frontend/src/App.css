@@ -276,3 +276,112 @@ a {
 	display: flex;
 	justify-content: space-evenly;
   }
+
+
+  /* for pagination*/
+
+  .pagination {
+	margin: 15px auto;
+	display: flex;
+	list-style: none;
+	outline: none;
+	margin-left: 450px;
+	margin-top: 50px;
+	font-size: 1.7rem;
+  }
+  .pagination > .active > a{
+	background-color: rgb(255, 189, 67) ;
+	border-color: #252d4a ;
+	color: #252d4a;
+  }
+  .pagination > li > a{
+	border: 1px solid #252d4a ;
+	padding: 5px 10px;
+	outline: none;
+	cursor: pointer;
+  }
+  .pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus{
+	background-color: rgb(255, 189, 67) ;
+	border-color: #252d4a;
+	outline: none ;
+  }
+  .pagination > li > a, .pagination > li > span{
+	color: #252d4a
+  }
+  .pagination > li:first-child > a, .pagination > li:first-child > span, .pagination > li:last-child > a, .pagination > li:last-child > span{
+	border-radius: unset
+  }
+  
+  /*responsive navbar */
+  .sidebar {
+	margin: 0;
+	margin-left:11px;
+	padding: 0;
+	width: 200px;
+	background-color: #252d4a;
+	position:absolute;
+	height: 100%;
+	overflow: auto;
+	color:white;
+	font-size: 1.3rem;
+  }
+  
+  .sidebar a {
+	display: block;
+	color: white;
+	padding: 16px;
+	text-decoration: none;
+	border-bottom: solid 1px rgb(255, 189, 67);
+  }
+   
+  .sidebar a.actives {
+	background-color: rgb(255, 189, 67);;
+	color: #252d4a;
+	font-weight:700;
+  }
+  
+  .sidebar a:hover:not(.actives) {
+	background-color: rgb(255, 189, 67);
+	color: #252d4a;
+  }
+  
+  div.content {
+	margin-left: 200px;
+	padding: 1px 16px;
+	height: 1000px;
+  }
+  
+  @media screen and (max-width: 700px) {
+	.sidebar {
+	  width: 100%;
+	  height: auto;
+	  position: relative;
+	}
+	.sidebar a {float: left;}
+	div.content {margin-left: 0;}
+  }
+  
+  @media screen and (max-width: 400px) {
+	.sidebar a {
+	  text-align: center;
+	  float: none;
+	}
+  }
+
+  /*Video placement */
+
+  .videoLesson{
+	  margin-left:280px;
+  }
+
+  .imageLesson{
+	  display:inline; 
+	  margin-left:60px; 
+	  border: solid 1px #252d4a;
+  }
+
+  .imageLabel{
+	  margin-top: 30px;
+	  display: inline;
+	  margin-left:280px;
+  }
