@@ -1,10 +1,14 @@
 import React from 'react';
+import axios from 'axios';
 import { doSocialSignIn } from '../firebase/FirebaseFunctions';
 
 const SocialSignIn = () => {
   const socialSignOn = async (provider) => {
     try {
-      await doSocialSignIn(provider);
+      const cred = await doSocialSignIn(provider);
+      axios.post('http://localhost:9000/create/' + cred.user.email).then(function (response){
+        console.log(response);
+      });
     } catch (error) {
       alert(error);
     }

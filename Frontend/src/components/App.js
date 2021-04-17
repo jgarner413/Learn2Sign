@@ -13,6 +13,7 @@ import Alphabets from './Alphabets';
 import { AuthProvider } from '../firebase/Auth';
 import PrivateRoute from './PrivateRoute';
 import Test1 from './Tests/Test1';
+import Test2 from './Tests/Test2';
 function App() {
   return (
     <AuthProvider>
@@ -26,6 +27,7 @@ function App() {
         <PrivateRoute path="/home" component={Home} />
         <PrivateRoute path="/tests" component={Test} />
         <PrivateRoute path="/test/1" component={Test1} />
+        <PrivateRoute path="/test/2" component={Test2} />
         <PrivateRoute path="/account" component={Account} />
         <PrivateRoute path="/lessons/:id" component={lessons} />
 

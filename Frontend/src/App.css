@@ -193,8 +193,21 @@ a {
 	align-items: center;
 	color: white;
   }
+
+  .header-section {
+	font-size: 40px;	
+  }
+  
   
   /* QUESTION/TIMER/LEFT SECTION */
+
+  .feedback-section {
+	width: 100%;
+	position: relative;
+	color: white;
+	font-size: 24px
+
+  }
   .question-section {
 	width: 100%;
 	position: relative;
@@ -231,6 +244,9 @@ a {
 	justify-content: space-between;
   }
   
+  .youranswer {
+	  font-style: italic;
+  }
   button {
 	width: 100%;
 	font-size: 16px;

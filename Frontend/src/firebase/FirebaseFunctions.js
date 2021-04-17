@@ -20,13 +20,14 @@ async function doSignInWithEmailAndPassword(email, password) {
 }
 
 async function doSocialSignIn(provider) {
-  let socialProvider = null;
-  if (provider === 'google') {
-    socialProvider = new firebase.auth.GoogleAuthProvider();
-  } else if (provider === 'facebook') {
-    socialProvider = new firebase.auth.FacebookAuthProvider();
-  }
-  await firebase.auth().signInWithPopup(socialProvider);
+	let socialProvider = null;
+	if (provider === 'google') {
+		socialProvider = new firebase.auth.GoogleAuthProvider();
+	} else if (provider === 'facebook') {
+		socialProvider = new firebase.auth.FacebookAuthProvider();
+	}
+	const userCred = await firebase.auth().signInWithPopup(socialProvider);
+	return userCred;
 }
 
 async function doPasswordReset(email) {

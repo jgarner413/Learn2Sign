@@ -15,26 +15,18 @@ import { AppBar, Toolbar, IconButton, Typography } from '@material-ui/core';
 
 const Navigation = () => {
 	const { currentUser } = useContext(AuthContext);
+	console.log(currentUser);
+	console.log(firebase.auth().currentUser);
 	return (
 		<div>{currentUser ? <NavigationAuth /> : <NavigationNonAuth />}</div>
 	);
 };
 
 const NavigationAuth = () => {
-	/*const GET_USER = gql`
-		query($userId: ID!) {
-			getUser(userId: $userId) {
-				name
-			}
-		}
-	`;
+	/*
 	console.log(firebase.auth().currentUser);
 	const userID = firebase.auth().currentUser.uid;
-	const { isloading, data } = useQuery(GET_USER, {
-		variables: {
-			userId: userID
-		}
-	});*/
+*/
   let isloading = false; //temp until database is online
   let data = true; //temp until database is online
 	if (isloading) {
@@ -102,7 +94,7 @@ const NavigationAuth = () => {
 				</nav>
 				<br />
 				{{ data } && (
-					<div className="user name">Welcome Temp User</div> //Change when database is integrated
+					<div className="user name">Welcome {firebase.auth().currentUser.displayName}</div> //Change when database is integrated
 				)}
 			</div>
 		);
