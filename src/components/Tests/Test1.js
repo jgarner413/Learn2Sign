@@ -1,44 +1,53 @@
 import React, { useState } from 'react';
+import ProgressBar from "../ProgressBar"
 
 function Test1() {
 	const questions = [
 		{
-			questionText: 'What is the capital of France?',
+			questionText: 'What letter does this sign represent?',
 			answerOptions: [
-				{ answerText: 'New York', isCorrect: false },
-				{ answerText: 'London', isCorrect: false },
-				{ answerText: 'Paris', isCorrect: true },
-				{ answerText: 'Dublin', isCorrect: false },
+				{ answerText: 'G', isCorrect: false },
+				{ answerText: 'B', isCorrect: false },
+				{ answerText: 'D', isCorrect: true },
+				{ answerText: 'C', isCorrect: false },
 			],
 		},
 		{
-			questionText: 'Who is CEO of Tesla?',
+			questionText: 'What letter does this sign represent?',
 			answerOptions: [
-				{ answerText: 'Jeff Bezos', isCorrect: false },
-				{ answerText: 'Elon Musk', isCorrect: true },
-				{ answerText: 'Bill Gates', isCorrect: false },
-				{ answerText: 'Tony Stark', isCorrect: false },
+				{ answerText: 'A', isCorrect: false },
+				{ answerText: 'B', isCorrect: true },
+				{ answerText: 'E', isCorrect: false },
+				{ answerText: 'C', isCorrect: false },
 			],
 		},
 		{
-			questionText: 'The iPhone was created by which company?',
+			questionText: 'What letter does this sign represent?',
 			answerOptions: [
-				{ answerText: 'Apple', isCorrect: true },
-				{ answerText: 'Intel', isCorrect: false },
-				{ answerText: 'Amazon', isCorrect: false },
-				{ answerText: 'Microsoft', isCorrect: false },
+				{ answerText: 'F', isCorrect: true },
+				{ answerText: 'C', isCorrect: false },
+				{ answerText: 'E', isCorrect: false },
+				{ answerText: 'G', isCorrect: false },
 			],
 		},
 		{
-			questionText: 'How many Harry Potter books are there?',
+			questionText: 'What letter does this sign represent?',
 			answerOptions: [
-				{ answerText: '1', isCorrect: false },
-				{ answerText: '4', isCorrect: false },
-				{ answerText: '6', isCorrect: false },
-				{ answerText: '7', isCorrect: true },
+				{ answerText: 'G', isCorrect: false },
+				{ answerText: 'E', isCorrect: false },
+				{ answerText: 'C', isCorrect: false },
+				{ answerText: 'A', isCorrect: true },
 			],
 		},
 	];
+
+	var images = new Array();
+	images[0] = "/imgs/D.png";
+	images[1] = "/imgs/B.png";
+	images[2] = "/imgs/F.png";
+	images[3] = "/imgs/A.png";
+
+	
 
 	const [currentQuestion, setCurrentQuestion] = useState(0);
 	const [showScore, setShowScore] = useState(false);
@@ -57,6 +66,8 @@ function Test1() {
 		}
 	};
 	return (
+		<div>
+			<ProgressBar bgcolor="#00695c" completed={((currentQuestion + 1)/questions.length)*100} />
 		<div className='testBody'>
 			{showScore ? (
 				<div className='score-section'>
@@ -69,6 +80,7 @@ function Test1() {
 							<span>Question {currentQuestion + 1}</span>/{questions.length}
 						</div>
 						<div className='question-text'>{questions[currentQuestion].questionText}</div>
+						<img width="90%" height="70%" object-fit="contain" src = {images[currentQuestion]} alt="Test img" />
 					</div>
 					<div className='answer-section'>
 						{questions[currentQuestion].answerOptions.map((answerOption) => (
@@ -77,6 +89,7 @@ function Test1() {
 					</div>
 				</>
 			)}
+		</div>
 		</div>
 	);
 }
