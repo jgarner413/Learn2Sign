@@ -89,6 +89,12 @@ app.post("/:userID/:test/:score", async (req, res) => {
     }
 });
 
+/// FOR DEV ONLY
+app.get("/getusers", async (req,res) => {
+    let users = await userData.getAllUsers();
+    res.status(200).json(users);
+});
+
 app.listen(9000, () => {
     console.log("Server is running!");
     console.log("Your routes will be running on http://localhost:9000");

@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{ useContext, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import {
 	Card,
@@ -14,6 +14,9 @@ import {
 import { Link } from 'react-router-dom';
 import '../App.css';
 import lesson_img from '../lesson1.jpg';
+import axios from 'axios';
+import { AuthContext } from '../firebase/Auth';
+
 const useStyles = makeStyles({
 	root: {
 		flexGrow: 1,
@@ -30,6 +33,24 @@ const useStyles = makeStyles({
 
 
 function Home() {
+	const { currentUser } = useContext(AuthContext);
+	const [status, setStatus] = useState([false, false, false]);
+	const [loading, setLoading] = useState(true);
+
+	async function getStatus(){
+		let rcvOne = await axios.get(`http://localhost:9000/${currentUser.email}/lessonOne`);
+		let lessonOne = rcvOne.data.status;
+		let rcvTwo = await axios.get(`http://localhost:9000/${currentUser.email}/lessonTwo`);
+		let lessonTwo = rcvTwo.data.status;
+		let rcvThree = await axios.get(`http://localhost:9000/${currentUser.email}/lessonThree`);
+		let lessonThree = rcvThree.data.status;
+		setStatus([lessonOne, lessonTwo, lessonThree]);
+		setLoading(false);
+	}
+
+	if(loading){	
+		getStatus();
+	}
 
   const classes = useStyles();
   let cards = [];
@@ -37,24 +58,29 @@ function Home() {
     name: "Alphabets",
     summary: "A-Z",
     id: 1,
-    image: "src/lesson1.jpg"
+    image: "src/lesson1.jpg",
+	status: status[0]
   },  
   {
     name: "Words",
     id: 2,
     summary: "Basic Words",
-    image: "./src/lesson1.jpg"
+    image: "./src/lesson1.jpg",
+	status: status[1]
   },
   
   {
     name: "Greetings",
     id: 3,
-    summary: "greetings",
-    image: "./src/lesson1.jpg"
+    summary: "Simple Greetings",
+    image: "./src/lesson1.jpg",
+	status: status[2]
+
   }]
   let lesson_cards = [];
 
   if (lessons) {
+	  console.log(lessons);
 		let newCards = lessons.map((lesson) => {
 			return (
 				<Grid item xs={12} sm={6} md={4} key={lesson.id}>
@@ -82,6 +108,8 @@ function Home() {
 									component="p"
 								>
 									{lesson.summary}
+									<br/>
+									{`Complete: ${lesson.status}`}
 								</Typography>
 							</CardContent>
 						</CardActionArea>
