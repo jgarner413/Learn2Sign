@@ -73,7 +73,7 @@ function Test1() {
 	};
 	return (
 			<div>
-			<ProgressBar bgcolor="#00695c" completed={((currentQuestion +1 )/questions.length)*100} />
+			<ProgressBar bgcolor="#252d4a" completed={((currentQuestion +1 )/questions.length)*100} />
 			<div className='testBody'>
 			{showScore ? (
 				<div className='feedback-section'>	

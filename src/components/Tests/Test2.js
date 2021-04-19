@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import ProgressBar from "../ProgressBar"
 
 function Test2() {
 	const questions = [
@@ -74,6 +75,8 @@ function Test2() {
 
 
 	return (
+		<div>
+			<ProgressBar bgcolor="#252d4a" completed={((currentQuestion +1 )/questions.length)*100} />
 		<div className='testBody'>
 			{showScore ? (
 				<div className='feedback-section'>	
@@ -126,6 +129,7 @@ function Test2() {
 					</div>
 				</>
 			)}
+		</div>
 		</div>
 	);
 }
