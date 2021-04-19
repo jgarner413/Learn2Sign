@@ -34,20 +34,20 @@ function Home() {
   const classes = useStyles();
   let cards = [];
   let lessons = [{
-    name: "Lesson 1",
-    summary: "Alphabet",
+    name: "Alphabets",
+    summary: "A-Z",
     id: 1,
     image: "src/lesson1.jpg"
   },  
   {
-    name: "Lesson 2",
+    name: "Words",
     id: 2,
-    summary: "Basic Phrases",
+    summary: "Basic Words",
     image: "./src/lesson1.jpg"
   },
   
   {
-    name: "Lesson 3",
+    name: "Greetings",
     id: 3,
     summary: "greetings",
     image: "./src/lesson1.jpg"
@@ -60,7 +60,7 @@ function Home() {
 				<Grid item xs={12} sm={6} md={4} key={lesson.id}>
 					<Card className={classes.root} key={lesson.id}>
 						<CardActionArea>
-							<Link to={`/lesson/${lesson.id}`}>
+							<Link to={`/lessons/${lesson.id}`}>
 								<CardMedia
 									className={classes.media}
 									image= {lesson_img}
@@ -94,7 +94,7 @@ function Home() {
   return (
     <>
     <div>
-      <h2>Lessons</h2>
+      <h2>Tutorials</h2>
     </div>
     			<Grid container spacing={2}>
           {cards}
