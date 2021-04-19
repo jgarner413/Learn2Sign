@@ -1,6 +1,11 @@
-import React, { useState } from 'react';
+import React, {useContext, useState } from 'react';
+import axios from 'axios';
+import { AuthContext } from '../../firebase/Auth';
+
 
 function Test2() {
+	const { currentUser } = useContext(AuthContext);
+
 	const questions = [
 		{
 			questionText: 'What word does this sign represent?',
@@ -71,7 +76,9 @@ function Test2() {
 		
 	};
 
-
+	if(showScore){
+		axios.post(`http://localhost:9000/${currentUser.email}/testTwo/${score/4*100}`);
+	}
 
 	return (
 		<div className='testBody'>

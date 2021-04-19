@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import {
 	Card,
@@ -14,6 +14,10 @@ import {
 import { Link } from 'react-router-dom';
 import '../App.css';
 import test_img from '../lesson1.jpg';
+import axios from 'axios';
+import { AuthContext } from '../firebase/Auth';
+
+
 const useStyles = makeStyles({
 	root: {
 		flexGrow: 1,
@@ -31,26 +35,47 @@ const useStyles = makeStyles({
 
 function Test() {
 
+	const { currentUser } = useContext(AuthContext);
+	const [status, setStatus] = useState(["N/A", "N/A", "N/A"]);
+	const [loading, setLoading] = useState(true);
+
+	async function getStatus(){
+		let rcvOne = await axios.get(`http://localhost:9000/${currentUser.email}/testOne`);
+		let testOne = rcvOne.data.status;
+		let rcvTwo = await axios.get(`http://localhost:9000/${currentUser.email}/testTwo`);
+		let testTwo = rcvTwo.data.status;
+		let rcvThree = await axios.get(`http://localhost:9000/${currentUser.email}/testThree`);
+		let testThree = rcvThree.data.status;
+		setStatus([testOne, testTwo, testThree]);
+		setLoading(false);
+	}
+	if(loading){	
+		getStatus();
+	}
+
   const classes = useStyles();
   let cards = [];
   let tests = [{
     name: "Test 1",
     summary: "Alphabet",
     id: 1,
-    image: "src/lesson1.jpg"
+    image: "src/lesson1.jpg",
+	status: status[0]
   },  
   {
     name: "Test 2",
     id: 2,
     summary: "Basic Words and Phrases",
-    image: "./src/lesson1.jpg"
+    image: "./src/lesson1.jpg",
+	status: status[1]
   },
   
   {
     name: "Test 3",
     id: 3,
     summary: "greetings",
-    image: "./src/lesson1.jpg"
+    image: "./src/lesson1.jpg",
+	status: status[2]
   }]
   let test_cards = [];
 
@@ -82,6 +107,8 @@ function Test() {
 									component="p"
 								>
 									{test.summary}
+									<br/>
+									{`Score: ${test.status}`}
 								</Typography>
 							</CardContent>
 						</CardActionArea>
