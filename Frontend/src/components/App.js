@@ -10,6 +10,8 @@ import SignUp from './SignUp';
 import Test from './TestDashboard';
 import lessons from './lessons';
 import Alphabets from './Alphabets';
+import Words from './Words';
+import lessons_words from './lessons_words';
 import { AuthProvider } from '../firebase/Auth';
 import PrivateRoute from './PrivateRoute';
 import Test1 from './Tests/Test1';
@@ -19,7 +21,7 @@ function App() {
     <AuthProvider>
       <Router>
         <div className="App">
-          <header className="App-header">
+          <header>
             <Navigation />
           </header>
         </div>
@@ -29,6 +31,7 @@ function App() {
         <PrivateRoute path="/test/1" component={Test1} />
         <PrivateRoute path="/test/2" component={Test2} />
         <PrivateRoute path="/account" component={Account} />
+        <PrivateRoute path="/lessons_words/:id" component={lessons_words} />
         <PrivateRoute path="/lessons/:id" component={lessons} />
 
         

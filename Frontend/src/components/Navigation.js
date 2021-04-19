@@ -37,7 +37,7 @@ const NavigationAuth = () => {
 		return (
 			<div>
 				<nav className="navigation">
-					<Typography variant="h1">Learn2Sign</Typography>
+					
 					<AppBar
 						position="relative"
 						style={{ background: '#2E3B55' }}
@@ -46,39 +46,21 @@ const NavigationAuth = () => {
 							<div className="links title">
 								<StarIcon> </StarIcon>
 								<NavLink exact to="/" activeClassName="active">
-									Landing
+									Learn2Sign
 								</NavLink>
 							</div>
 							<div className="links title">
-								<HomeIcon> </HomeIcon>
+							<BookIcon> </BookIcon>
 								<NavLink
 									exact
 									to="/home"
 									activeClassName="active"
 								>
-									Home
-								</NavLink>
-							</div>
-							<div className="links title">
-								<AccountCircleIcon> </AccountCircleIcon>
-								<NavLink
-									exact
-									to="/account"
-									activeClassName="active"
-								>
-									Account
-								</NavLink>
-							</div>
-							<div className="links title">
-								<BookIcon> </BookIcon>
-								<NavLink
-									exact
-									to="/lessons"
-									activeClassName="active"
-								>
 									Lessons
 								</NavLink>
 							</div>
+							
+							
 							<div className="links title">
 								<TestIcon> </TestIcon>
 								<NavLink
@@ -88,14 +70,25 @@ const NavigationAuth = () => {
 								>
 									Tests
 								</NavLink>
+								
 							</div>
+							<div className="links title">
+								<AccountCircleIcon> </AccountCircleIcon>
+								<NavLink
+									exact
+									to="/account"
+									activeClassName="active"
+								>
+								Account
+								</NavLink>
+							</div>
+							{{ data } && (
+								<div className="userName">{firebase.auth().currentUser.displayName}</div> //Change when database is integrated
+							)}
 						</Toolbar>
 					</AppBar>
 				</nav>
-				<br />
-				{{ data } && (
-					<div className="user name">Welcome {firebase.auth().currentUser.displayName}</div> //Change when database is integrated
-				)}
+				
 			</div>
 		);
 	}
@@ -105,8 +98,8 @@ const NavigationNonAuth = () => {
 	return (
 		<div>
 			<nav className="navigation">
-				<Typography variant="h1">Learn2Sign</Typography>
-				<AppBar position="relative" style={{ background: '#2E3B55' }}>
+				
+				<AppBar position="relative" style={{ background: '#2E3B55', paddingLeft:"200px" }}>
 					<Toolbar style={{ color: 'black' }}>
 						<div className="links title">
 							<NavLink
@@ -115,7 +108,7 @@ const NavigationNonAuth = () => {
 								activeClassName="active"
 								id="landing"
 							>
-								Landing
+								Learn2Sign
 							</NavLink>
 						</div>
 

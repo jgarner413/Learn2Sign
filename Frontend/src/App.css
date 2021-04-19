@@ -81,13 +81,15 @@
   margin-left: 450px;
 } */
 .App-header {
-	background-image: url('./asl_banner2.jpeg');
-	background-size: 100% 400px;
+	background-image: url('./test1.gif');
+	background-size: 100% ;
 	background-repeat: no-repeat;
-	background-color: #004d43;
-	height: 300px;
+	
+
+	height:650px;
+	
 	padding: 20px;
-	color: white;
+	color: #252d4a;
 }
 
 /* div {
@@ -103,7 +105,10 @@ h1 {
 	text-align: center;
 }
 .intro {
-	text-align: center;
+	text-align: justify;
+	margin-left: 15%;
+	margin-right:15%;
+	font-size: x-large;
 }
 h2 {
 	text-align: center;
@@ -153,7 +158,7 @@ h2 {
 
 .active {
 	font-weight: bold;
-	color: #0895c9 !important;
+	color:  rgb(255, 189, 67) !important;
 }
 a {
 	color: #004d43;
@@ -331,13 +336,14 @@ a {
   /*responsive navbar */
   .sidebar {
 	margin: 0;
-	margin-left:11px;
+	margin-left:0px;
 	padding: 0;
-	width: 200px;
+	width: 250px;
 	background-color: #252d4a;
 	position:absolute;
 	height: 100%;
-	overflow: auto;
+	
+	overflow:auto;
 	color:white;
 	font-size: 1.3rem;
   }
@@ -351,7 +357,7 @@ a {
   }
    
   .sidebar a.actives {
-	background-color: rgb(255, 189, 67);;
+	background-color: rgb(255, 189, 67);
 	color: #252d4a;
 	font-weight:700;
   }
@@ -400,4 +406,10 @@ a {
 	  margin-top: 30px;
 	  display: inline;
 	  margin-left:280px;
+  }
+
+
+  .userName{
+	  font-size: 1.8rem;
+
   }

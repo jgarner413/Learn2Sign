@@ -80,12 +80,14 @@ function Home() {
   let lesson_cards = [];
 
   if (lessons) {
-	  console.log(lessons);
+	  
 		let newCards = lessons.map((lesson) => {
 			return (
+			
 				<Grid item xs={12} sm={6} md={4} key={lesson.id}>
 					<Card className={classes.root} key={lesson.id}>
 						<CardActionArea>
+						
 							<Link to={`/lessons/${lesson.id}`}>
 								<CardMedia
 									className={classes.media}
@@ -115,6 +117,7 @@ function Home() {
 						</CardActionArea>
 					</Card>
 				</Grid>
+				
 			);
 		});
     cards = newCards;
@@ -122,8 +125,13 @@ function Home() {
   return (
     <>
     <div>
+	<br></br>
       <h2>Tutorials</h2>
+	  <br></br>
+	  <br></br>
     </div>
+
+
     			<Grid container spacing={2}>
           {cards}
         </Grid>
