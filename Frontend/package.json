@@ -24,7 +24,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "exp": "node express.js"
+    "exp": "node ../express.js"
   },
   "eslintConfig": {
     "extends": "react-app"
