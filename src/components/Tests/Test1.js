@@ -52,26 +52,60 @@ function Test1() {
 	const [currentQuestion, setCurrentQuestion] = useState(0);
 	const [showScore, setShowScore] = useState(false);
 	const [score, setScore] = useState(0);
+	//useState used to collect user responses to each question
+	const [answers, setAnswers] = useState([]);
 
-	const handleAnswerOptionClick = (isCorrect) => {
+	const handleAnswerOptionClick = (isCorrect, answerText) => {
 		if (isCorrect) {
 			setScore(score + 1);
+			setAnswers(answers => answers.concat(answerText));
 		}
-
+		if (!isCorrect){
+			setAnswers(answers => answers.concat(answerText));
+		}
 		const nextQuestion = currentQuestion + 1;
 		if (nextQuestion < questions.length) {
 			setCurrentQuestion(nextQuestion);
 		} else {
 			setShowScore(true);
 		}
+		
 	};
 	return (
-		<div>
-			<ProgressBar bgcolor="#00695c" completed={((currentQuestion + 1)/questions.length)*100} />
-		<div className='testBody'>
+			<div>
+			<ProgressBar bgcolor="#00695c" completed={((currentQuestion +1 )/questions.length)*100} />
+			<div className='testBody'>
 			{showScore ? (
-				<div className='score-section'>
-					You scored {score} out of {questions.length}
+				<div className='feedback-section'>	
+					<div className='header-section'>
+					<font color = "#2f922f">You scored {score} out of {questions.length} correctly!</font>
+					</div>
+					<div className='feedback-section'>
+					Question 1. {questions[0].questionText} 
+					<div className='feedback-section'>
+					You answered: {answers[0]} <font color = "#2f922f">Correct answer: D</font>
+					</div>
+					</div>
+					<div className='feedback-section'>
+					Question 2. {questions[1].questionText} 
+					<div className='feedback-section'>
+					You answered: {answers[1]} <font color = "#2f922f">Correct answer: B</font>
+					</div>
+					</div>
+					<div className='feedback-section'>
+					Question 3. {questions[2].questionText}
+					<div className='feedback-section'>
+					You answered: {answers[2]} <font color = "#2f922f">Correct answer: F</font>
+					</div>
+					</div>
+					<div className='feedback-section'>
+					Question 4. {questions[3].questionText} 
+					<div className='feedback-section'>
+					You answered: {answers[3]} <font color = "#2f922f">Correct answer: A</font>
+					</div>
+					</div>
+					
+
 				</div>
 			) : (
 				<>
@@ -84,7 +118,7 @@ function Test1() {
 					</div>
 					<div className='answer-section'>
 						{questions[currentQuestion].answerOptions.map((answerOption) => (
-							<button className="buttonTest" onClick={() => handleAnswerOptionClick(answerOption.isCorrect)}>{answerOption.answerText}</button>
+							<button className="buttonTest" onClick={() => handleAnswerOptionClick(answerOption.isCorrect, answerOption.answerText)}>{answerOption.answerText}</button>
 						))}
 					</div>
 				</>
