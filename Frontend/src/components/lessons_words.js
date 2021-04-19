@@ -9,7 +9,7 @@ import Words from './Words';
 
 
 
-
+/* for words module */
 
 
 function lessons_words() {
