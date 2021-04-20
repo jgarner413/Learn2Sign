@@ -1,66 +1,122 @@
-import React, { useState } from 'react';
+import ProgressBar from "../ProgressBar"
+import React, {useContext, useState } from 'react';
+import axios from 'axios';
+import { AuthContext } from '../../firebase/Auth';
 
 function Test1() {
+
+	const { currentUser } = useContext(AuthContext);
+
+
 	const questions = [
 		{
-			questionText: 'What is the capital of France?',
+			questionText: 'What letter does this sign represent?',
 			answerOptions: [
-				{ answerText: 'New York', isCorrect: false },
-				{ answerText: 'London', isCorrect: false },
-				{ answerText: 'Paris', isCorrect: true },
-				{ answerText: 'Dublin', isCorrect: false },
+				{ answerText: 'G', isCorrect: false },
+				{ answerText: 'B', isCorrect: false },
+				{ answerText: 'D', isCorrect: true },
+				{ answerText: 'C', isCorrect: false },
 			],
 		},
 		{
-			questionText: 'Who is CEO of Tesla?',
+			questionText: 'What letter does this sign represent?',
 			answerOptions: [
-				{ answerText: 'Jeff Bezos', isCorrect: false },
-				{ answerText: 'Elon Musk', isCorrect: true },
-				{ answerText: 'Bill Gates', isCorrect: false },
-				{ answerText: 'Tony Stark', isCorrect: false },
+				{ answerText: 'A', isCorrect: false },
+				{ answerText: 'B', isCorrect: true },
+				{ answerText: 'E', isCorrect: false },
+				{ answerText: 'C', isCorrect: false },
 			],
 		},
 		{
-			questionText: 'The iPhone was created by which company?',
+			questionText: 'What letter does this sign represent?',
 			answerOptions: [
-				{ answerText: 'Apple', isCorrect: true },
-				{ answerText: 'Intel', isCorrect: false },
-				{ answerText: 'Amazon', isCorrect: false },
-				{ answerText: 'Microsoft', isCorrect: false },
+				{ answerText: 'F', isCorrect: true },
+				{ answerText: 'C', isCorrect: false },
+				{ answerText: 'E', isCorrect: false },
+				{ answerText: 'G', isCorrect: false },
 			],
 		},
 		{
-			questionText: 'How many Harry Potter books are there?',
+			questionText: 'What letter does this sign represent?',
 			answerOptions: [
-				{ answerText: '1', isCorrect: false },
-				{ answerText: '4', isCorrect: false },
-				{ answerText: '6', isCorrect: false },
-				{ answerText: '7', isCorrect: true },
+				{ answerText: 'G', isCorrect: false },
+				{ answerText: 'E', isCorrect: false },
+				{ answerText: 'C', isCorrect: false },
+				{ answerText: 'A', isCorrect: true },
 			],
 		},
 	];
 
+	var images = new Array();
+	images[0] = "/imgs/D.png";
+	images[1] = "/imgs/B.png";
+	images[2] = "/imgs/F.png";
+	images[3] = "/imgs/A.png";
+
+	
+
 	const [currentQuestion, setCurrentQuestion] = useState(0);
 	const [showScore, setShowScore] = useState(false);
 	const [score, setScore] = useState(0);
+	//useState used to collect user responses to each question
+	const [answers, setAnswers] = useState([]);
 
-	const handleAnswerOptionClick = (isCorrect) => {
+	const handleAnswerOptionClick = (isCorrect, answerText) => {
 		if (isCorrect) {
 			setScore(score + 1);
+			setAnswers(answers => answers.concat(answerText));
 		}
-
+		if (!isCorrect){
+			setAnswers(answers => answers.concat(answerText));
+		}
 		const nextQuestion = currentQuestion + 1;
 		if (nextQuestion < questions.length) {
 			setCurrentQuestion(nextQuestion);
 		} else {
 			setShowScore(true);
 		}
+		
 	};
+
+	if(showScore){
+		axios.post(`http://localhost:9000/${currentUser.email}/testOne/${score/4*100}`);
+	}
+
 	return (
-		<div className='testBody'>
+			<div>
+			<ProgressBar bgcolor="#252d4a" completed={((currentQuestion +1 )/questions.length)*100} />
+			<div className='testBody'>
 			{showScore ? (
-				<div className='score-section'>
-					You scored {score} out of {questions.length}
+				<div className='feedback-section'>	
+					<div className='header-section'>
+					<font color = "#2f922f">You scored {score} out of {questions.length} correctly!</font>
+					</div>
+					<div className='feedback-section'>
+					Question 1. {questions[0].questionText} 
+					<div className='feedback-section'>
+					You answered: {answers[0]} <font color = "#2f922f">Correct answer: D</font>
+					</div>
+					</div>
+					<div className='feedback-section'>
+					Question 2. {questions[1].questionText} 
+					<div className='feedback-section'>
+					You answered: {answers[1]} <font color = "#2f922f">Correct answer: B</font>
+					</div>
+					</div>
+					<div className='feedback-section'>
+					Question 3. {questions[2].questionText}
+					<div className='feedback-section'>
+					You answered: {answers[2]} <font color = "#2f922f">Correct answer: F</font>
+					</div>
+					</div>
+					<div className='feedback-section'>
+					Question 4. {questions[3].questionText} 
+					<div className='feedback-section'>
+					You answered: {answers[3]} <font color = "#2f922f">Correct answer: A</font>
+					</div>
+					</div>
+					
+
 				</div>
 			) : (
 				<>
@@ -69,14 +125,16 @@ function Test1() {
 							<span>Question {currentQuestion + 1}</span>/{questions.length}
 						</div>
 						<div className='question-text'>{questions[currentQuestion].questionText}</div>
+						<img width="90%" height="70%" object-fit="contain" src = {images[currentQuestion]} alt="Test img" />
 					</div>
 					<div className='answer-section'>
 						{questions[currentQuestion].answerOptions.map((answerOption) => (
-							<button className="buttonTest" onClick={() => handleAnswerOptionClick(answerOption.isCorrect)}>{answerOption.answerText}</button>
+							<button className="buttonTest" onClick={() => handleAnswerOptionClick(answerOption.isCorrect, answerOption.answerText)}>{answerOption.answerText}</button>
 						))}
 					</div>
 				</>
 			)}
+		</div>
 		</div>
 	);
 }

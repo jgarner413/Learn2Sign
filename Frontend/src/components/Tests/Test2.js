@@ -1,7 +1,8 @@
+
+import ProgressBar from "../ProgressBar"
 import React, {useContext, useState } from 'react';
 import axios from 'axios';
 import { AuthContext } from '../../firebase/Auth';
-
 
 function Test2() {
 	const { currentUser } = useContext(AuthContext);
@@ -81,6 +82,8 @@ function Test2() {
 	}
 
 	return (
+		<div>
+			<ProgressBar bgcolor="#252d4a" completed={((currentQuestion +1 )/questions.length)*100} />
 		<div className='testBody'>
 			{showScore ? (
 				<div className='feedback-section'>	
@@ -133,6 +136,7 @@ function Test2() {
 					</div>
 				</>
 			)}
+		</div>
 		</div>
 	);
 }
