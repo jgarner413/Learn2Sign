@@ -1,7 +1,13 @@
-import React, { useState } from 'react';
 import ProgressBar from "../ProgressBar"
+import React, {useContext, useState } from 'react';
+import axios from 'axios';
+import { AuthContext } from '../../firebase/Auth';
 
 function Test1() {
+
+	const { currentUser } = useContext(AuthContext);
+
+
 	const questions = [
 		{
 			questionText: 'What letter does this sign represent?',
@@ -71,6 +77,11 @@ function Test1() {
 		}
 		
 	};
+
+	if(showScore){
+		axios.post(`http://localhost:9000/${currentUser.email}/testOne/${score/4*100}`);
+	}
+
 	return (
 			<div>
 			<ProgressBar bgcolor="#252d4a" completed={((currentQuestion +1 )/questions.length)*100} />
