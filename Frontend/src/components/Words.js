@@ -23,7 +23,7 @@ function Words (props) {
     summary:"CEASE TO SUPPORT",
     image:"a1.jpg",    
     module_id: 5,
-    video:"abandon.mp4"
+    video:""
   },  
   {
     id:3, 
