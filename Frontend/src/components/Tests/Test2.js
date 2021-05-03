@@ -3,8 +3,26 @@ import ProgressBar from "../ProgressBar"
 import React, {useContext, useState } from 'react';
 import axios from 'axios';
 import { AuthContext } from '../../firebase/Auth';
+import { Link } from 'react-router-dom';
 
 function Test2() {
+
+	const linkStyle = {
+		margin: "1rem",
+		color: 'white',
+		backgroundColor: "#252d4a",
+		display: 'flex',
+        height: 30,
+		width: '25%',
+		justifyContent: 'center',
+		alignItems:'center',
+	  };
+
+	  const fullElemnt = {
+        display: 'flex',
+        justifyContent: 'center',
+    }
+
 	const { currentUser } = useContext(AuthContext);
 
 	const questions = [
@@ -83,7 +101,8 @@ function Test2() {
 
 	return (
 		<div>
-			<ProgressBar bgcolor="#252d4a" completed={((currentQuestion +1 )/questions.length)*100} />
+			<h2>Percent (%) Completed:</h2>
+			<ProgressBar bgcolor="#087548" completed={((currentQuestion +1 )/questions.length)*100} />
 		<div className='testBody'>
 			{showScore ? (
 				<div className='feedback-section'>	
@@ -114,8 +133,6 @@ function Test2() {
 					You answered: {answers[3]} <font color = "#2f922f">Correct answer: Happy Birthday!</font>
 					</div>
 					</div>
-					
-
 				</div>
 				
 			) : (
@@ -136,6 +153,9 @@ function Test2() {
 					</div>
 				</>
 			)}
+		</div>
+		<div style = {fullElemnt}>
+		<Link to="/lessons/2" style = {linkStyle} >Link To Words Lesson</Link>
 		</div>
 		</div>
 	);

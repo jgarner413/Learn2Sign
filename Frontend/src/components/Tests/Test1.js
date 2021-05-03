@@ -2,8 +2,25 @@ import ProgressBar from "../ProgressBar"
 import React, {useContext, useState } from 'react';
 import axios from 'axios';
 import { AuthContext } from '../../firebase/Auth';
+import { Link } from 'react-router-dom';
 
 function Test1() {
+
+	const linkStyle = {
+		margin: "1rem",
+		color: 'white',
+		backgroundColor: "#252d4a",
+		display: 'flex',
+        height: 30,
+		width: '25%',
+		justifyContent: 'center',
+		alignItems:'center',
+	  };
+
+	  const fullElemnt = {
+        display: 'flex',
+        justifyContent: 'center',
+    }
 
 	const { currentUser } = useContext(AuthContext);
 
@@ -45,13 +62,63 @@ function Test1() {
 				{ answerText: 'A', isCorrect: true },
 			],
 		},
+		{
+			questionText: 'What letter does this sign represent?',
+			answerOptions: [
+				{ answerText: 'R', isCorrect: false },
+				{ answerText: 'B', isCorrect: false },
+				{ answerText: 'J', isCorrect: false },
+				{ answerText: 'H', isCorrect: true },
+			],
+		},
+		{
+			questionText: 'What letter does this sign represent?',
+			answerOptions: [
+				{ answerText: 'E', isCorrect: false },
+				{ answerText: 'L', isCorrect: true },
+				{ answerText: 'F', isCorrect: false },
+				{ answerText: 'M', isCorrect: false },
+			],
+		},
+		{
+			questionText: 'What letter does this sign represent?',
+			answerOptions: [
+				{ answerText: 'P', isCorrect: true },
+				{ answerText: 'U', isCorrect: false },
+				{ answerText: 'O', isCorrect: false },
+				{ answerText: 'V', isCorrect: false },
+			],
+		},
+		{
+			questionText: 'What letter does this sign represent?',
+			answerOptions: [
+				{ answerText: 'I', isCorrect: false },
+				{ answerText: 'J', isCorrect: false },
+				{ answerText: 'S', isCorrect: false },
+				{ answerText: 'T', isCorrect: true },
+			],
+		},
 	];
+
+	var videos = new Array();
+	videos[0] = "d1.mp4";
+	videos[1] = "b1.mp4";
+	videos[2] = "f1.mp4";
+	videos[3] = "a1.mp4";
+	videos[4] = "h1.mp4";
+	videos[5] = "l1.mp4";
+	videos[6] = "p1.mp4";
+	videos[7] = "t1.mp4";
 
 	var images = new Array();
 	images[0] = "/imgs/D.png";
 	images[1] = "/imgs/B.png";
 	images[2] = "/imgs/F.png";
 	images[3] = "/imgs/A.png";
+	images[4] = "h1.mp4";
+	images[5] = "l1.mp4";
+	images[6] = "p1.mp4";
+	images[7] = "t1.mp4";
 
 	
 
@@ -84,7 +151,8 @@ function Test1() {
 
 	return (
 			<div>
-			<ProgressBar bgcolor="#252d4a" completed={((currentQuestion +1 )/questions.length)*100} />
+				<h2>Percent (%) Completed:</h2>
+				<ProgressBar bgcolor="#087548" completed={((currentQuestion +1 )/questions.length)*100} />
 			<div className='testBody'>
 			{showScore ? (
 				<div className='feedback-section'>	
@@ -115,8 +183,6 @@ function Test1() {
 					You answered: {answers[3]} <font color = "#2f922f">Correct answer: A</font>
 					</div>
 					</div>
-					
-
 				</div>
 			) : (
 				<>
@@ -125,7 +191,11 @@ function Test1() {
 							<span>Question {currentQuestion + 1}</span>/{questions.length}
 						</div>
 						<div className='question-text'>{questions[currentQuestion].questionText}</div>
-						<img width="90%" height="70%" object-fit="contain" src = {images[currentQuestion]} alt="Test img" />
+						<video width="400" height="250" controls >
+						<source src={`/lesson_videos/${videos[currentQuestion]}`} type="video/mp4"/>
+                  			{/* <source src= {videos[currentQuestion]} type="video/mp4"/> */}
+                  		</video>
+						{/* <img width="90%" height="70%" object-fit="contain" src = {images[currentQuestion]} alt="Test img" /> */}
 					</div>
 					<div className='answer-section'>
 						{questions[currentQuestion].answerOptions.map((answerOption) => (
@@ -134,6 +204,9 @@ function Test1() {
 					</div>
 				</>
 			)}
+		</div>
+		<div style = {fullElemnt}>
+		<Link to="/lessons/1" style = {linkStyle} >Link To Alphabet Lesson</Link>
 		</div>
 		</div>
 	);
