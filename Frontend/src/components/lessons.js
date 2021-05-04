@@ -3,6 +3,7 @@ import React, {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import '../App.css';
 import Alphabets from './Alphabets';
+import Greetings from './Greetings';
 import Words from './Words';
 
 
@@ -90,9 +91,29 @@ function lessons() {
    
  }
  else{
-  const [moduleId, setModuleId]= useState(parseInt(27))
+  const [moduleId, setModuleId]= useState(parseInt(31))
   return(
-   <div>greetings</div>
+    <div>  
+      <div class="sidebar">
+      <a class="actives" onClick={() =>{ setModuleId(31)}} >Good Morning</a>     
+      <a onClick={() =>{ setModuleId(32)}} >Good Night</a>    
+      <a onClick={() =>{ setModuleId(33)}} >Good Evening</a>     
+      <a onClick={() =>{ setModuleId(34)}} >Good Afternoon</a>
+      <a  onClick={() =>{ setModuleId(35)}} >Have a good day</a>
+      <a  onClick={() =>{ setModuleId(36)}} >How are you</a>
+      <a  onClick={() =>{ setModuleId(37)}} >Nice to meet you</a>
+      <a  onClick={() =>{ setModuleId(38)}} >Thank You</a>
+      <a  onClick={() =>{ setModuleId(39)}} >You are welcome</a>
+      
+
+     
+    </div>
+    
+    <div class="content">
+    <Greetings module_id={moduleId}/>
+    </div>
+    </div>
+    
   );
   
 }
