@@ -89,7 +89,7 @@ module.exports = {
         updatedUser[lesson] = true;
 
         const updatedInfo = await userCollection.updateOne({userID: userID}, {$set: updatedUser});
-        if(updatedInfo.modifiedCount === 0) return Promise.reject('Could not update Lesson successfully');
+        if(updatedInfo.modifiedCount === 0) return Promise.reject('Lesson was already completed.');
         return updatedUser[lesson];
 
     },
