@@ -82,9 +82,6 @@ const NavigationAuth = () => {
 								Account
 								</NavLink>
 							</div>
-							{{ data } && (
-								<div className="userName">{firebase.auth().currentUser.displayName}</div> //Change when database is integrated
-							)}
 						</Toolbar>
 					</AppBar>
 				</nav>
