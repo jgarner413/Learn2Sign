@@ -302,7 +302,7 @@ a {
   /* for pagination*/
 
   .pagination {
-	margin: 15px auto;
+	
 	display: flex;
 	list-style: none;
 	outline: none;
@@ -341,7 +341,7 @@ a {
 	width: 250px;
 	background-color: #252d4a;
 	position:absolute;
-	height: 100%;
+	height: 90%;
 	
 	overflow:auto;
 	color:white;
@@ -394,6 +394,7 @@ a {
 
   .videoLesson{
 	  margin-left:280px;
+	  height:400px;
   }
 
   .imageLesson{
@@ -412,4 +413,9 @@ a {
   .userName{
 	  font-size: 1.8rem;
 
+  }
+
+  .wordImage{
+	  height:400px;
+	  width:400px;
   }

@@ -244,7 +244,7 @@ function Words (props) {
                 
                   <h1>{re.name}</h1>
                   {re.isTitle===1 ?
-                  <img src={`/lesson_images/${re.image}`}></img>:
+                  <img src={`/lesson_images/${re.image}`} className="wordImage"></img>:
 
                   <video className="videoLesson" width="750" height="500" controls >
                   <source src={`/lesson_videos/${re.video}`} type="video/mp4"/>
