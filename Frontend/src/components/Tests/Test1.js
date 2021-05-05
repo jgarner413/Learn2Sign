@@ -101,26 +101,14 @@ function Test1() {
 	];
 
 	var videos = new Array();
-	videos[0] = "d1.mp4";
+	videos[0] = "j1.mp4";
 	videos[1] = "b1.mp4";
 	videos[2] = "f1.mp4";
 	videos[3] = "a1.mp4";
 	videos[4] = "h1.mp4";
 	videos[5] = "l1.mp4";
 	videos[6] = "p1.mp4";
-	videos[7] = "t1.mp4";
-
-	var images = new Array();
-	images[0] = "/imgs/D.png";
-	images[1] = "/imgs/B.png";
-	images[2] = "/imgs/F.png";
-	images[3] = "/imgs/A.png";
-	images[4] = "h1.mp4";
-	images[5] = "l1.mp4";
-	images[6] = "p1.mp4";
-	images[7] = "t1.mp4";
-
-	
+	videos[7] = "t1.mp4";	
 
 	const [currentQuestion, setCurrentQuestion] = useState(0);
 	const [showScore, setShowScore] = useState(false);
@@ -191,11 +179,9 @@ function Test1() {
 							<span>Question {currentQuestion + 1}</span>/{questions.length}
 						</div>
 						<div className='question-text'>{questions[currentQuestion].questionText}</div>
-						<video width="400" height="250" controls >
+						<video key={`/lesson_videos/${videos[currentQuestion]}`} width="400" height="250" controls autoplay loop muted >
 						<source src={`/lesson_videos/${videos[currentQuestion]}`} type="video/mp4"/>
-                  			{/* <source src= {videos[currentQuestion]} type="video/mp4"/> */}
                   		</video>
-						{/* <img width="90%" height="70%" object-fit="contain" src = {images[currentQuestion]} alt="Test img" /> */}
 					</div>
 					<div className='answer-section'>
 						{questions[currentQuestion].answerOptions.map((answerOption) => (
