@@ -1,10 +1,13 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import ReactPaginate from 'react-paginate';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+import { AuthContext } from '../firebase/Auth';
+
 
 function Alphabets (props) {
-
+  const { currentUser } = useContext(AuthContext);
 
   let alphabetList = [
     {
@@ -299,12 +302,17 @@ function Alphabets (props) {
                   {re.isTitle===1 ?
                   <img src={`/lesson_images/${re.image}`}></img>:
 
-                  <video className="videoLesson" width="750" height="500" controls >
+                  <video className="videoLesson" width="750" height="500" controls loop>
                   <source src={`/lesson_videos/${re.video}`} type="video/mp4"/>
                   </video>}
                   <br></br>
                   
               </div>)
+
+              if(props.module_id === 4){
+                axios.post(`http://localhost:9000/${currentUser.email}/lessonOne`);
+              }
+
               setData(postData)
               setPageCount(Math.ceil(data.length / perPage))
 }
