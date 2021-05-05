@@ -1,6 +1,6 @@
 ## To run application
 
-Download repo
+Download repo\n
 Run npm install in root directory
 run "node express" in root directory
 Open a second terminal
