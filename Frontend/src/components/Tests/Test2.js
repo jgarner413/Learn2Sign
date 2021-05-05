@@ -29,47 +29,86 @@ function Test2() {
 		{
 			questionText: 'What word does this sign represent?',
 			answerOptions: [
-				{ answerText: 'Goodnight!', isCorrect: false },
-				{ answerText: 'Bye!', isCorrect: false },
-				{ answerText: 'Hello!', isCorrect: true },
-				{ answerText: 'Goodmorning!', isCorrect: false },
-			],
-		},
-		{
-			questionText: 'What common phrase does this sign represent?',
-			answerOptions: [
-				{ answerText: 'Have a good day!', isCorrect: false },
-				{ answerText: 'How are you?', isCorrect: true },
-				{ answerText: 'Whats your name?', isCorrect: false },
-				{ answerText: 'Where are you from?', isCorrect: false },
+				{ answerText: 'Radio', isCorrect: false },
+				{ answerText: 'Valid', isCorrect: false },
+				{ answerText: 'Safe', isCorrect: true },
+				{ answerText: 'Half', isCorrect: false },
 			],
 		},
 		{
 			questionText: 'What word does this sign represent?',
 			answerOptions: [
-				{ answerText: 'Goodbye!', isCorrect: true },
-				{ answerText: 'Hello!', isCorrect: false },
-				{ answerText: 'Cool!', isCorrect: false },
-				{ answerText: 'Nice!', isCorrect: false },
+				{ answerText: 'Jacket', isCorrect: false },
+				{ answerText: 'Female', isCorrect: true },
+				{ answerText: 'Deal', isCorrect: false },
+				{ answerText: 'Abbreviate', isCorrect: false },
 			],
 		},
 		{
-			questionText: 'What common phrase does this sign represent?',
+			questionText: 'What word does this sign represent?',
 			answerOptions: [
-				{ answerText: 'See you later!', isCorrect: false },
-				{ answerText: 'Have fun!', isCorrect: false },
-				{ answerText: 'Game over!', isCorrect: false },
-				{ answerText: 'Happy Birthday!', isCorrect: true },
+				{ answerText: 'Easy', isCorrect: true },
+				{ answerText: 'Car', isCorrect: false },
+				{ answerText: 'Valid', isCorrect: false },
+				{ answerText: 'Wait', isCorrect: false },
+			],
+		},
+		{
+			questionText: 'What word does this sign represent?',
+			answerOptions: [
+				{ answerText: 'Machine', isCorrect: false },
+				{ answerText: 'Walk', isCorrect: false },
+				{ answerText: 'Zero', isCorrect: false },
+				{ answerText: 'Knife', isCorrect: true },
+			],
+		},
+		{
+			questionText: 'What word does this sign represent?',
+			answerOptions: [
+				{ answerText: 'Name', isCorrect: false },
+				{ answerText: 'Knife', isCorrect: false },
+				{ answerText: 'Zero', isCorrect: false },
+				{ answerText: 'Year', isCorrect: true },
+			],
+		},
+		{
+			questionText: 'What word does this sign represent?',
+			answerOptions: [
+				{ answerText: 'Oath', isCorrect: false },
+				{ answerText: 'Safe', isCorrect: false },
+				{ answerText: 'Back', isCorrect: true },
+				{ answerText: 'Paint', isCorrect: false },
+			],
+		},
+		{
+			questionText: 'What word does this sign represent?',
+			answerOptions: [
+				{ answerText: 'Quantity', isCorrect: false },
+				{ answerText: 'Wait', isCorrect: true },
+				{ answerText: 'Abandon', isCorrect: false },
+				{ answerText: 'Abbreviate', isCorrect: false },
+			],
+		},
+		{
+			questionText: 'What word does this sign represent?',
+			answerOptions: [
+				{ answerText: 'Name', isCorrect: true },
+				{ answerText: 'Daily', isCorrect: false },
+				{ answerText: 'Test', isCorrect: false },
+				{ answerText: 'Wall', isCorrect: false },
 			],
 		},
 	];
 
-	//hardcoded paths for images associated with relevant test question
-	var images = new Array();
-	images[0] = "/imgs/hello.png";
-	images[1] = "/imgs/howareyou.png";
-	images[2] = "/imgs/goodbye.png";
-	images[3] = "/imgs/hbd.png";
+	var videos = new Array();
+	videos[0] = "safe.mp4";
+	videos[1] = "female.mp4";
+	videos[2] = "easy.mp4";
+	videos[3] = "knife.mp4";
+	videos[4] = "year.mp4";
+	videos[5] = "back.mp4";
+	videos[6] = "wait.mp4";
+	videos[7] = "name.mp4";	
 	
 
 	const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -96,7 +135,7 @@ function Test2() {
 	};
 
 	if(showScore){
-		axios.post(`http://localhost:9000/${currentUser.email}/testTwo/${score/4*100}`);
+		axios.post(`http://localhost:9000/${currentUser.email}/testTwo/${score/8*100}`);
 	}
 
 	return (
@@ -112,25 +151,49 @@ function Test2() {
 					<div className='feedback-section'>
 					Question 1. {questions[0].questionText} 
 					<div className='feedback-section'>
-					You answered: {answers[0]} <font color = "#2f922f">Correct answer: Hello!</font>
+					You answered: {answers[0]} <font color = "#2f922f">Correct answer: Safe</font>
 					</div>
 					</div>
 					<div className='feedback-section'>
 					Question 2. {questions[1].questionText} 
 					<div className='feedback-section'>
-					You answered: {answers[1]} <font color = "#2f922f">Correct answer: How are you?</font>
+					You answered: {answers[1]} <font color = "#2f922f">Correct answer: Female</font>
 					</div>
 					</div>
 					<div className='feedback-section'>
 					Question 3. {questions[2].questionText}
 					<div className='feedback-section'>
-					You answered: {answers[2]} <font color = "#2f922f">Correct answer: Goodbye!</font>
+					You answered: {answers[2]} <font color = "#2f922f">Correct answer: Easy</font>
 					</div>
 					</div>
 					<div className='feedback-section'>
 					Question 4. {questions[3].questionText} 
 					<div className='feedback-section'>
-					You answered: {answers[3]} <font color = "#2f922f">Correct answer: Happy Birthday!</font>
+					You answered: {answers[3]} <font color = "#2f922f">Correct answer: Knife</font>
+					</div>
+					</div>
+					<div className='feedback-section'>
+					Question 5. {questions[4].questionText} 
+					<div className='feedback-section'>
+					You answered: {answers[4]} <font color = "#2f922f">Correct answer: Year</font>
+					</div>
+					</div>
+					<div className='feedback-section'>
+					Question 6. {questions[5].questionText} 
+					<div className='feedback-section'>
+					You answered: {answers[5]} <font color = "#2f922f">Correct answer: Back</font>
+					</div>
+					</div>
+					<div className='feedback-section'>
+					Question 7. {questions[6].questionText} 
+					<div className='feedback-section'>
+					You answered: {answers[6]} <font color = "#2f922f">Correct answer: Wait</font>
+					</div>
+					</div>
+					<div className='feedback-section'>
+					Question 8. {questions[7].questionText} 
+					<div className='feedback-section'>
+					You answered: {answers[7]} <font color = "#2f922f">Correct answer: Name</font>
 					</div>
 					</div>
 				</div>
@@ -142,7 +205,9 @@ function Test2() {
 							<span>Question {currentQuestion + 1}</span>/{questions.length}
 						</div>
 						<div className='question-text'>{questions[currentQuestion].questionText}</div>
-						<img width="90%" height="70%" object-fit="contain" src = {images[currentQuestion]} alt="Test2 img" />
+						<video key={`/lesson_videos/${videos[currentQuestion]}`} width="400" height="250" controls autoPlay loop muted >
+						<source src={`/lesson_videos/${videos[currentQuestion]}`} type="video/mp4"/>
+                  		</video>
 					</div>
 					<div className='answer-section'>
 						{questions[currentQuestion].answerOptions.map((answerOption) => (

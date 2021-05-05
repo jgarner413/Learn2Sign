@@ -99,7 +99,7 @@ function Words (props) {
   summary:"A THICK ROPE OF WIRE",
   image:"c1.jpg",    
   module_id: 7,
-  video:"cable.jpg"
+  video:"cable.mp4"
 },
 {
   id:11,
@@ -135,7 +135,7 @@ function Words (props) {
   summary:"ONE'S FATHER",
   image:"d1.jpg",    
   module_id: 8,
-  video:"daddy.jpg"
+  video:"daddy.mp4"
 },
 {
   id:15,
@@ -171,7 +171,7 @@ function Words (props) {
   summary:"A BIRD",
   image:"e1.jpg",    
   module_id: 9,
-  video:"eagle.jpg"
+  video:"eagle.mp4"
 },
 {
   id:19,
@@ -207,7 +207,7 @@ function Words (props) {
   summary:"PART OF BODY",
   image:"f1.jpg",    
   module_id: 10,
-  video:"face.jpg"
+  video:"face.mp4"
 },
 {
   id:23,
@@ -325,7 +325,7 @@ name: "ICECREAM",
 summary:" A soft frozen food made with sweetened and flavored milk fat. ",
 image:"i1.jpg",    
 module_id: 13,
-video:"icecream.mp4"
+video:"ice cream.mp4"
 },
 {
 id:36,
@@ -730,7 +730,7 @@ name: "TACTIC",
 summary:"An action or strategy carefully planned to achieve a specific end.",
 image:"t1.jpg",    
 module_id: 24,
-video:"tacic.mp4"
+video:"tactic.mp4"
 },
 {
 id:81,
@@ -793,7 +793,7 @@ name: "VACCANT",
 summary:"not occupied or in use; available",
 image:"v1.jpg",    
 module_id: 26,
-video:"vaccant.mp4"
+video:"vacant.mp4"
 },
 {
 id:88,
@@ -970,7 +970,7 @@ video:"zeal.mp4"
                   {re.isTitle===1 ?
                   <img src={`/lesson_images/${re.image}`} className="wordImage"></img>:
 
-                  <video className="videoLesson" width="750" height="500" controls loop>
+                  <video className="videoLesson" width="750" height="500" controls autoPlay muted loop>
                   <source src={`/lesson_videos/${re.video}`} type="video/mp4"/>
                   </video>}
                   <br></br>

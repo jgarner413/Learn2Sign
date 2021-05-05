@@ -134,7 +134,7 @@ function Test1() {
 	};
 
 	if(showScore){
-		axios.post(`http://localhost:9000/${currentUser.email}/testOne/${score/4*100}`);
+		axios.post(`http://localhost:9000/${currentUser.email}/testOne/${score/8*100}`);
 	}
 
 	return (
@@ -171,6 +171,30 @@ function Test1() {
 					You answered: {answers[3]} <font color = "#2f922f">Correct answer: A</font>
 					</div>
 					</div>
+					<div className='feedback-section'>
+					Question 4. {questions[4].questionText} 
+					<div className='feedback-section'>
+					You answered: {answers[4]} <font color = "#2f922f">Correct answer: H</font>
+					</div>
+					</div>
+					<div className='feedback-section'>
+					Question 4. {questions[5].questionText} 
+					<div className='feedback-section'>
+					You answered: {answers[5]} <font color = "#2f922f">Correct answer: L</font>
+					</div>
+					</div>
+					<div className='feedback-section'>
+					Question 4. {questions[6].questionText} 
+					<div className='feedback-section'>
+					You answered: {answers[6]} <font color = "#2f922f">Correct answer: P</font>
+					</div>
+					</div>
+					<div className='feedback-section'>
+					Question 4. {questions[7].questionText} 
+					<div className='feedback-section'>
+					You answered: {answers[7]} <font color = "#2f922f">Correct answer: T</font>
+					</div>
+					</div>
 				</div>
 			) : (
 				<>
@@ -179,7 +203,7 @@ function Test1() {
 							<span>Question {currentQuestion + 1}</span>/{questions.length}
 						</div>
 						<div className='question-text'>{questions[currentQuestion].questionText}</div>
-						<video key={`/lesson_videos/${videos[currentQuestion]}`} width="400" height="250" controls autoplay loop muted >
+						<video key={`/lesson_videos/${videos[currentQuestion]}`} width="400" height="250" controls autoPlay loop muted >
 						<source src={`/lesson_videos/${videos[currentQuestion]}`} type="video/mp4"/>
                   		</video>
 					</div>
