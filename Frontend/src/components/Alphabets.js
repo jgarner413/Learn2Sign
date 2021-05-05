@@ -171,7 +171,7 @@ function Alphabets (props) {
     summary:"as in the letter O",
     image:"o1.jpg",    
     module_id: 3,
-    video:"01.mp4"
+    video:"o1.mp4"
   },
   {
     id:19,
@@ -302,7 +302,7 @@ function Alphabets (props) {
                   {re.isTitle===1 ?
                   <img src={`/lesson_images/${re.image}`}></img>:
 
-                  <video className="videoLesson" width="750" height="500" controls loop>
+                  <video className="videoLesson" width="750" height="500" controls autoPlay muted loop>
                   <source src={`/lesson_videos/${re.video}`} type="video/mp4"/>
                   </video>}
                   <br></br>
