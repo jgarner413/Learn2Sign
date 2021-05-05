@@ -1,10 +1,15 @@
 ## To run application
 
-Download repo__
+Download repo
+
 Run npm install in root directory
+
 run "node express" in root directory
+
 Open a second terminal
+
 cd into frontend
+
 run "npm start"
 
 Make sure you have the .env file in the frontend folder
