@@ -1,3 +1,14 @@
+## To run application
+
+Download repo
+Run npm install in root directory
+run "node express" in root directory
+Open a second terminal
+cd into frontend
+run "npm start"
+
+Make sure you have the .env file in the frontend folder
+
 ## Firebase Auth and React Example
 This project uses React and Firebase Authentication.  You will need to put your Firebase credentials into a .env file in the project root as shown in the lecture. The .env file should look like below.  
 
