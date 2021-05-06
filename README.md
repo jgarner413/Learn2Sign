@@ -10,9 +10,13 @@ Open a second terminal
 
 cd into frontend
 
+run "npm install"
+
 run "npm start"
 
-Make sure you have the .env file in the frontend folder
+Open "localhost:3000" in your browser to view the application
+
+Make sure you have the .env file in the frontend folder or else the website will show up blank
 
 ## Firebase Auth and React Example
 This project uses React and Firebase Authentication.  You will need to put your Firebase credentials into a .env file in the project root as shown in the lecture. The .env file should look like below.  
